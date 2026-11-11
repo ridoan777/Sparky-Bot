@@ -1,0 +1,298 @@
+# Question-1:
+
+Given data:
+phase:3-phase
+voltage:400
+load_current:34
+installation_type:underground_wiring_enclosure
+cable_type:copper_solid_stranded
+cable_core:multi
+support_condition:perforated_tray
+spacing:touching
+cable_supports:1
+circuit_per_row:1
+total_cables:6
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:10
+cable_length:55
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 200,
+    "Table_used": "table-24|table-13|table-42",
+    "derating_factor": 0.76,
+    "min_cc_capacity": 44.74,
+    "max_allowed_volt_drop": "10",
+    "cable_volt_drop": 7.22,
+    "first_suggestion": "10mm²",
+    "cable_size_suggestion": 10,
+    "message": "Based on the inputs, The 10mm² cable size is suggested & supported for your max volt drop rate."
+}
+------------------------------------------------------------------------------
+# Question-2:
+
+Given data:
+phase:3-phase
+voltage:400
+load_current:34
+installation_type:touching_unenclosed
+cable_type:copper_solid_stranded
+cable_core:single
+support_condition:perforated_tray
+spacing:touching
+cable_supports:1
+circuit_per_row:1
+total_cables:6
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:10
+cable_length:55
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 200,
+    "Table_used": "table-23|table-7|table-40",
+    "derating_factor": 0.97,
+    "min_cc_capacity": 35.05,
+    "max_allowed_volt_drop": "10",
+    "cable_volt_drop": 7.22,
+    "first_suggestion": "6mm²",
+    "cable_size_suggestion": "10",
+    "message": "Based on the inputs, the 6mm² cable size was primarily suggested which does not support the voltage drop. The suggested cable size is: 10mm²."
+}
+
+------------------------------------------------------------------------------
+# Question-3:
+
+Given data:
+phase:3-phase
+voltage:415
+load_current:60
+installation_type:touching_unenclosed
+cable_type:copper_solid_stranded
+cable_core:single
+support_condition:perforated_tray
+spacing:touching
+cable_supports:1
+circuit_per_row:1
+total_cables:6
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:10
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 200,
+    "Table_used": "table-23|table-7|table-44",
+    "derating_factor": 0.97,
+    "min_cc_capacity": 61.86,
+    "max_allowed_volt_drop": "5",
+    "cable_volt_drop": 4.52,
+    "first_suggestion": "25mm²",
+    "cable_size_suggestion": "50",
+    "message": "Based on the inputs, the 25mm² cable size was primarily suggested which does not support the voltage drop. The suggested cable size is: 50mm²."
+}
+------------------------------------------------------------------------------
+# Question-4:
+
+Given data:
+phase:1-phase
+voltage:220
+load_current:20
+installation_type:spaced_unenclosed
+cable_type:copper_flexible
+cable_core:single
+support_condition:perforated_tray
+spacing:touching
+cable_supports:1
+circuit_per_row:1
+total_cables:6
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:5
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 200,
+    "Table_used": "table-23|table-7|table-40",
+    "derating_factor": 0.97,
+    "min_cc_capacity": 20.62,
+    "max_allowed_volt_drop": "5",
+    "cable_volt_drop": 4.73875,
+    "first_suggestion": "1.5mm²",
+    "cable_size_suggestion": "10",
+    "message": "Based on the inputs, the 1.5mm² cable size was primarily suggested which does not support the voltage drop. The suggested cable size is: 10mm²."
+}
+------------------------------------------------------------------------------
+
+# Question-5:
+
+Given data:
+phase:dc
+voltage:60
+load_current:2.5
+installation_type:spaced_unenclosed
+cable_type:copper_flexible
+cable_core:single
+support_condition:perforated_tray
+spacing:touching
+cable_supports:1
+circuit_per_row:1
+total_cables:6
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:5
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 200,
+    "Table_used": "table-23|table-7|table-40",
+    "derating_factor": 0.97,
+    "min_cc_capacity": 2.58,
+    "max_allowed_volt_drop": "5",
+    "cable_volt_drop": 4.38195,
+    "first_suggestion": "1mm²",
+    "cable_size_suggestion": "1.5",
+    "message": "Based on the inputs, the 1mm² cable size was primarily suggested which does not support the voltage drop. The suggested cable size is: 1.5mm²."
+}
+------------------------------------------------------------------------------
+
+
+# Question-6: Edge Cases
+
+Given data:
+phase:3-phase
+voltage:60
+load_current:2.5
+installation_type:spaced_unenclosed
+cable_type:copper_flexible
+cable_core:multi
+support_condition:perforated_tray
+spacing:touching
+cable_supports:4
+circuit_per_row:1
+total_cables:6
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:5
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 500,
+    "message": "Server error/Faulty value inserted: Trying to access array offset on null"
+}
+------------------------------------------------------------------------------
+
+# Question-7: Edge Cases
+
+Given data:
+phase:3-phase
+voltage:60
+load_current:2.5
+installation_type:spaced_unenclosed
+cable_type:copper_flexible
+cable_core:multi
+support_condition:vertical_perforated_tray
+spacing:spaced
+cable_supports:3
+circuit_per_row:3
+total_cables:5
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:5
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 422,
+    "data": "Derating factor = ",
+    "process": "unprocessable input data",
+    "message": "Unsupported cable supports/row numbers for Vertical Perforated Tray. Allowed number is 1 or 2 by the standard AS/NZS 3008 table-24"
+}
+------------------------------------------------------------------------------
+
+
+# Question-8: No-Edge Case
+
+Given data:
+phase:3-phase
+voltage:60
+load_current:2.5
+installation_type:spaced_unenclosed
+cable_type:copper_flexible
+cable_core:multi
+support_condition:vertical_perforated_tray
+spacing:spaced
+cable_supports:2
+circuit_per_row:3
+total_cables:9
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:5
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 200,
+    "Table_used": "table-24|table-13|table-42",
+    "derating_factor": 0.86,
+    "min_cc_capacity": 2.91,
+    "max_allowed_volt_drop": "5",
+    "cable_volt_drop": 3.93,
+    "first_suggestion": "1mm²",
+    "cable_size_suggestion": "1.5",
+    "message": "Based on the inputs, the 1mm² cable size was primarily suggested which does not support the voltage drop. The suggested cable size is: 1.5mm²."
+}
+------------------------------------------------------------------------------
+
+
+# Question-9: Edge Case
+
+Given data:
+phase:3-phase
+voltage:60
+load_current:2.5
+installation_type:spaced_unenclosed
+cable_type:copper_flexible
+cable_core:multi
+support_condition:vertical_perforated_tray
+spacing:spaced
+cable_supports:2
+circuit_per_row:3
+total_cables:10
+conductor_temperature:temp_75
+power_factor:pf_max
+max_volt_drop:5
+cable_length:55
+
+
+Find the proper cable size based on As/NZS3008 standard (2017):
+Response:
+{
+    "status": 422,
+    "data": "Derating factor = ",
+    "process": "unprocessable input data",
+    "message": "The derating value for 10 cables is undefined by the standard AS/NZS 3008 (Table-24). Reduce the number of cables or use the derating factor of 6-cables with caution!"
+}
+------------------------------------------------------------------------------
+
+

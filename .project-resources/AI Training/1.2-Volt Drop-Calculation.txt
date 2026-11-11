@@ -1,0 +1,161 @@
+# Question-1: 
+Given data:
+phase:1-phase
+voltage:230
+current:10
+cable_size:2.5
+cable_length:30
+
+Find volt drop by the standard of AS/NZS3008 (2017).
+Response:
+{
+    "status": 200,
+    "Voltage Drop": "5.406V",
+    "Percentage Drop": "2.35%",
+    "Compliance Status": "Compliant",
+    "Input Data": {
+        "email": "alpha@gmail.com",
+        "phase": "1-phase",
+        "volt_drop": "5.406V",
+        "drop_percent": "2.35%",
+        "cable_size": 2.5,
+        "cable_length": 30,
+        "current": 10,
+        "voltage": 230,
+        "react_Xc": 0.102,
+        "resis_Rc": 9.01,
+        "imp_Zc": 9.01,
+        "coeff": "2",
+        "updated_at": "2025-10-22T05:43:18.000000Z",
+        "created_at": "2025-10-22T05:43:18.000000Z",
+        "id": 23
+    }
+}
+// -------------------------------------------------------------------
+# Question-2: 
+Given data:
+phase:3-phase
+voltage:415
+current:25
+cable_size:4
+cable_length:45
+
+Find volt drop by the standard of AS/NZS3008 (2017).
+Response:
+{
+    "status": 200,
+    "Voltage Drop": "10.933V",
+    "Percentage Drop": "2.63%",
+    "Compliance Status": "Compliant",
+    "Input Data": {
+        "email": "alpha@gmail.com",
+        "phase": "3-phase",
+        "volt_drop": "10.933V",
+        "drop_percent": "2.63%",
+        "cable_size": 4,
+        "cable_length": 45,
+        "current": 25,
+        "voltage": 415,
+        "react_Xc": 0.102,
+        "resis_Rc": 5.61,
+        "imp_Zc": 5.61,
+        "coeff": "√3",
+        "updated_at": "2025-10-22T05:50:07.000000Z",
+        "created_at": "2025-10-22T05:50:07.000000Z",
+        "id": 26
+    }
+}
+// -------------------------------------------------------------------
+# Question-3: 
+Given data:
+phase:dc
+voltage:90
+current:12
+cable_size:6
+cable_length:10
+
+Find volt drop by the standard of AS/NZS3008 (2017).
+Response:
+{
+    "status": 200,
+    "Voltage Drop": "0.9V",
+    "Percentage Drop": "1%",
+    "Compliance Status": "Compliant",
+    "Input Data": {
+        "email": "alpha@gmail.com",
+        "phase": "dc",
+        "volt_drop": "0.9V",
+        "drop_percent": "1%",
+        "cable_size": 6,
+        "cable_length": 10,
+        "current": 12,
+        "voltage": 90,
+        "react_Xc": 0.0967,
+        "resis_Rc": 3.75,
+        "imp_Zc": 3.75,
+        "coeff": "2",
+        "updated_at": "2025-10-22T05:51:06.000000Z",
+        "created_at": "2025-10-22T05:51:06.000000Z",
+        "id": 27
+    }
+}
+
+// -------------------------------------------------------------------
+# Question-4: Error Case
+Given data:
+phase:2-phase
+voltage:90
+current:12
+cable_size:6
+cable_length:10
+
+Find volt drop by the standard of AS/NZS3008 (2017).
+Response:
+{
+    "status": 422,
+    "message": "Wrong \"phase type\" value",
+    "data": {
+        "phase": "2-phase",
+        "cable_length": "10",
+        "current": "12",
+        "voltage": "90",
+        "cable_size": "6"
+    }
+}
+
+// -------------------------------------------------------------------
+# Question-5: Non-Compliant Case
+Given data:
+phase:3-phase
+voltage:415
+current:100
+cable_size:2.5
+cable_length:20
+
+Find volt drop by the standard of AS/NZS3008 (2017).
+{
+    "status": 200,
+    "Voltage Drop": "31.214V",
+    "Percentage Drop": "7.52%",
+    "Compliance Status": "Not compliant! Ideal case is 5% or less.",
+    "Input Data": {
+        "email": "alpha@gmail.com",
+        "phase": "3-phase",
+        "volt_drop": "31.214V",
+        "drop_percent": "7.52%",
+        "cable_size": 2.5,
+        "cable_length": 20,
+        "current": 100,
+        "voltage": 415,
+        "react_Xc": 0.102,
+        "resis_Rc": 9.01,
+        "imp_Zc": 9.01,
+        "coeff": "√3",
+        "updated_at": "2025-10-22T05:52:43.000000Z",
+        "created_at": "2025-10-22T05:52:43.000000Z",
+        "id": 36
+    }
+}
+
+
+

@@ -1,0 +1,85 @@
+Title: How to use the Cable Sizing Calculator (AS 3008) - Cable Pro Lessons
+Load:
+	- current: minimum current rating of the cable.
+	- power factor: has big impact on voltage drop for large cable sizes and not so much in small
+	- derating factor: multiplied by the standard current rating
+
+Supply:
+	- phases: updates the voltage input
+	- fault level: is the perspective  fault current lvl at the point of supply of the cable which affects the short circuit rating of the cable.
+		- result of cable size os the minimum size to withstand fault
+		- sometimes confusing results can be found for:
+			- very small cable sizes
+			- very short cable length
+			- very large fault level (kA)
+
+Cable:
+
+Installation:
+	- selection of Supply & Cable affects this section greatly.
+	- table referecne can be seen (table-4)
+
+Protection:
+	- device:
+		- MCCB : rating & thml. (thermal) setting must be greater than supply current 
+
+Result:
+	- spare capacity = current carrying capacity of the circuit as per the standard (lz) - protective device rating (ln).
+-------------------------------------------------------------------------------------------------------
+Title: How to Calculate Cable Size by Hand and using Software -- Based on Voltage Drop and Current Rating
+# 6 x 22KW, 45A motor cables are grouped on perforated cable tray. Their lengths(m) are 40, 55, 90, 135, 180, 225m. Cable type: PVC (75°C), multicore. There's voltage drop requirements =< 2.4% (or, 10V).
+
+Steps:
+	1. CURRENT RATING:
+		- working out minimum conductor size based on require current.
+		- Derating factor (Table 24).
+			Based on that, the value we will be using:
+				- [7-12] Perforated trays
+				- Touching
+				- Number of tiers/rows (1)
+				- Number of Cables : 6
+				∴ Final value of De-Rating factor = 0.76
+
+		- Min current carrying capacity of cables 45A * (1/0.76) = 59.2A
+		- Min cable size based on current rating (Table 13:Current-Carrying Capacities, three-core & four-core):
+			- [2-10] Unenclosed
+			- [5-7] Touching
+			- Cu
+			- Solid/Flexible
+			- 10mm² --> 51 (not enough for 59.2A)
+			- 16mm² --> 68 (OK)
+				∴ Min cable size based on current rating = 16mm²
+
+	2. VOLTAGE DROP:
+
+		Vd = (L*I*Vc)/1000
+			Vc values from Table 42:Three-Phase Voltage Drop (Vc) at 50 Hz
+
+			Cable-1: Vb = (40m*45A*2.43)/1000 = 4.37V < 10V [16mm² is perfect for cable-1]
+			Cable-2: Vb = (55m*45A*2.43)/1000 = 6.01V < 10V [16mm² is perfect for cable-2]
+			Cable-3: Vb = (90m*45A*2.43)/1000 = 9.84V < 10V [16mm² is perfect for cable-3]
+			Cable-4: Vb = (135m*45A*2.43)/1000 = 14.7 > 10 [16mm² not Okay]
+				Cable-4: Vb = (135m*45A*1.54)/1000 = 9.377 < 10 [next Vc, 25mm² is perfect for cable-4]
+			Cable-5: Vb = (180m*45A*1.11)/1000 = 8.9 < 10 [25mm² is not enough, 35mm² is perfect for cable-5]
+			Cable-6: Vb = (225m*45A*0.829)/1000 = 8.35 < 10 [35mm² is not enough, 50mm² is perfect for cable-6] 
+
+			- 75° cables
+			- 16mm²
+			- Max.
+			= 2.43
+
+		(ANS.)
+
+	3. USING A SOFTWARE ELEK:
+
+		- Load = 45A, Derating factor 0.71, power factor 0.85 were used
+			[
+				Power factor can be calculated using:
+				pf = P/(V.√3.I) = (22*1000)/(400*√3*45) = 0.71
+			]
+		- Installation = unenclosed touching
+		- Phase = 3 ph, voltage drop 2.4 400V, fault level 3, length 40m (only this changes)
+		- For cable-6, due to power factor 0.85, the Active = 35mm². Change it to pf=1, then Active = 50mm² (but we can also use 35mm² and save some money with the reasonable pf=0.85)
+
+
+-------------------------------------------------------------------------------------------------------
